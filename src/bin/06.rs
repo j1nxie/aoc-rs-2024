@@ -134,7 +134,7 @@ pub fn part_two(input: &str) -> Option<u32> {
             state.stepped.insert(start_pos);
 
             let mut steps = 0;
-            let max_steps = (width * height / 2) as usize;
+            let max_steps = (width * height) as usize;
             let mut is_loop = true;
 
             while steps < max_steps {
