@@ -11,7 +11,9 @@ fn solve(cache: &mut HashMap<(u64, usize), u64>, value: u64, steps: usize) -> u6
     }
 
     if value == 0 {
-        solve(cache, 1, steps - 1)
+        let new_val = solve(cache, 1, steps - 1);
+        cache.insert((value, steps), new_val);
+        new_val
     } else if value.to_string().len() % 2 == 0 {
         let val_str = value.to_string();
         let (left, right) = val_str.split_at(value.to_string().len() / 2);
@@ -20,7 +22,9 @@ fn solve(cache: &mut HashMap<(u64, usize), u64>, value: u64, steps: usize) -> u6
         cache.insert((value, steps), new_val);
         new_val
     } else {
-        solve(cache, value * 2024, steps - 1)
+        let new_val = solve(cache, value * 2024, steps - 1);
+        cache.insert((value, steps), new_val);
+        new_val
     }
 }
 
